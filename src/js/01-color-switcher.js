@@ -11,10 +11,10 @@ let intervalId = null;
 refs.stopBtn.disabled = true;
 
 function onStartBtnClick() {
+    refs.startBtn.disabled = true;
+    refs.stopBtn.disabled = false;
     intervalId = setInterval(() => {
-        document.body.style.backgroundColor = getRandomHexColor();
-        refs.startBtn.disabled = true;
-        refs.stopBtn.disabled = false;
+        document.body.style.backgroundColor = getRandomHexColor();        
     }, 1000);
 }
 

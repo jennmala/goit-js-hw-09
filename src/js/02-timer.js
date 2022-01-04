@@ -37,10 +37,16 @@ const options = {
 flatpickr('input#datetime-picker', options);
 
 function onStartBtnClick() {
-    setInterval(() => {
-        const delta = selectedDate.getTime() - Date.now();
-        updateLeftTime(convertMs(delta));
-    }, 1000);    
+  const intervalId = setInterval(() => {
+    const delta = selectedDate.getTime() - Date.now();
+    
+    if (delta <= 0) {
+      clearInterval(intervalId);
+      return;
+    }
+    
+    updateLeftTime(convertMs(delta));
+  }, 1000);    
 }
 
 function convertMs(ms) {
